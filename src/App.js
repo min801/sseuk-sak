@@ -13,9 +13,22 @@ export default function App() {
   }, []);
 
   return (
-    <div style={{ padding: '50px' }}>
-      <h1>슥삭(Sseuk-Sak)</h1>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+  <div style={{ padding: '50px' }}>
+    <h1>슥삭(Sseuk-Sak)</h1>
+    <div style={{ display: 'flex', gap: '10px' }}>
+      {data.map((post) => (
+        <div 
+          key={post.id} 
+          style={{ 
+            width: '150px', height: '150px', 
+            background: '#fff740', padding: '15px', 
+            boxShadow: '2px 2px 5px rgba(0,0,0,0.2)',
+            borderRadius: '5px' 
+          }}
+        >
+          {post.text}
+        </div>
+      ))}
     </div>
-  );
-}
+  </div>
+);
