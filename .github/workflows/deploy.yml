@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Deploy React
 
 on:
   push:
@@ -9,15 +9,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build
-
+      - uses: actions/checkout@v4
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
