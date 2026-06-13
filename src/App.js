@@ -1,34 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { db } from './firebase';
-import { collection, onSnapshot } from 'firebase/firestore';
+import React from 'react';
+import './App.css'; // 디자인 파일 연결
 
-export default function App() {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const unsubscribe = onSnapshot(collection(db, "posts"), (snapshot) => {
-      setData(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
-    });
-    return () => unsubscribe();
-  }, []);
-
+function App() {
   return (
-  <div style={{ padding: '50px' }}>
-    <h1>슥삭(Sseuk-Sak)</h1>
-    <div style={{ display: 'flex', gap: '10px' }}>
-      {data.map((post) => (
-        <div 
-          key={post.id} 
-          style={{ 
-            width: '150px', height: '150px', 
-            background: '#fff740', padding: '15px', 
-            boxShadow: '2px 2px 5px rgba(0,0,0,0.2)',
-            borderRadius: '5px' 
-          }}
-        >
-          {post.text}
-        </div>
-      ))}
+    <div style={{ padding: '50px', textAlign: 'center', backgroundColor: '#f0f0f0' }}>
+      <h1 style={{ color: 'blue' }}>슥삭! 내 첫 포스트잇</h1>
+      <p>드디어 디자인이 들어갔습니다.</p>
     </div>
-  </div>
-);
+  );
+}
+
+export default App;
